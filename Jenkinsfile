@@ -2,9 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Building the application...'
+                echo 'Building the Docker image...'
+                sh 'docker build -t dcegoat1/jenkins:latest .'
             }
         }
 
@@ -16,8 +17,9 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying the application...'
+                echo 'Deploy stage will push the image to Docker Hub...'
             }
         }
     }
 }
+
